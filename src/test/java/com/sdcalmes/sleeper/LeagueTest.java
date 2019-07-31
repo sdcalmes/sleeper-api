@@ -15,9 +15,9 @@ import static org.junit.Assert.*;
 public class LeagueTest
 {
 
-    Sleeper sleeper = new SleeperApi();
-    final String userNameToTest = "sdcalmes";
-    final String leagueIdToTest = "363728866864312320";
+    private final Sleeper sleeper = new SleeperApi();
+    private final String userNameToTest = "sdcalmes";
+    private final String leagueIdToTest = "363728866864312320";
 
     @Test
     public void testGettingLeaguesForUser() throws SleeperError, IOException

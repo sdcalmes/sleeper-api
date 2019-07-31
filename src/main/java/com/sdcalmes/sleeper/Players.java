@@ -7,7 +7,7 @@ import javax.annotation.concurrent.Immutable;
 import java.util.Map;
 
 @Immutable
-public interface Players {
+interface Players {
 
     //PLEASE USE THIS SPARINGLY AND CACHE THE RESULTS
     @GET("players/nfl")

@@ -10,7 +10,7 @@ import javax.annotation.concurrent.Immutable;
 import java.util.List;
 
 @Immutable
-public interface Drafts {
+interface Drafts {
 
     @GET("user/{user_id}/drafts/nfl/{season}")
     Call<List<Draft>> getAllDraftsForUser(@Path("user_id") String userId, @Path("season") String season);

@@ -23,7 +23,7 @@ public final class DraftImpl
 
     public List<Draft> getAllDraftsForUser(String userId, String season) throws SleeperError, IOException
     {
-        List<Draft> drafts = new ArrayList<>();
+        List<Draft> drafts;
             Response<List<Draft>> r = draftsEndpoint.getAllDraftsForUser(userId, season).execute();
             if (r.isSuccessful())
             {
@@ -38,7 +38,7 @@ public final class DraftImpl
 
     public List<Draft> getDraftsForLeague(String leagueId) throws SleeperError, IOException
     {
-        List<Draft> drafts = new ArrayList<>();
+        List<Draft> drafts;
             Response<List<Draft>> r = draftsEndpoint.getDraftsForLeague(leagueId).execute();
             if (r.isSuccessful())
             {
@@ -70,7 +70,7 @@ public final class DraftImpl
 
     public List<DraftPick> getDraftPicksFromDraft(String draftId) throws SleeperError, IOException
     {
-        List<DraftPick> draftPicks = new ArrayList<>();
+        List<DraftPick> draftPicks;
             Response<List<DraftPick>> r = draftsEndpoint.getDraftPicksFromDraft(draftId).execute();
             if (r.isSuccessful())
             {
@@ -86,7 +86,7 @@ public final class DraftImpl
 
     public List<DraftPickTrade> getTradedPicksForDraft(String draftId) throws SleeperError, IOException
     {
-        List<DraftPickTrade> draftPickTrades = new ArrayList<>();
+        List<DraftPickTrade> draftPickTrades;
             Response<List<DraftPickTrade>> r = draftsEndpoint.getTradedPicksForDraft(draftId).execute();
             if (r.isSuccessful())
             {

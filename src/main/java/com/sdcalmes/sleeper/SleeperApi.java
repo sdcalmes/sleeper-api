@@ -11,7 +11,7 @@ import javax.annotation.concurrent.Immutable;
 @Immutable
 public final class SleeperApi implements Sleeper {
 
-    public static final Retrofit RETROFIT =
+    private static final Retrofit RETROFIT =
             new Retrofit.Builder()
             .baseUrl("http://api.sleeper.app/v1/")
             .addConverterFactory(GsonConverterFactory.create())
@@ -25,7 +25,7 @@ public final class SleeperApi implements Sleeper {
         this(SleeperApi.RETROFIT);
     }
 
-    public SleeperApi(final Retrofit retrofit) {
+    private SleeperApi(final Retrofit retrofit) {
         this.retrofit = retrofit;
     }
 

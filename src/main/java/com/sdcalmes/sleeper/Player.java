@@ -2,7 +2,7 @@ package com.sdcalmes.sleeper;
 
 import java.util.List;
 
-public class Player {
+class Player {
 
     private String hashtag;
     private String depth_chart_position;

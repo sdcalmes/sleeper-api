@@ -21,7 +21,7 @@ public class PlayerImpl
 
     public Map<String, Player> getAllPlayers() throws SleeperError, IOException
     {
-        Map<String, Player> playerMap = new HashMap<>();
+        Map<String, Player> playerMap;
         Response<Map<String, Player>> r = playersEndpoint.getAllPlayers().execute();
         if (r.isSuccessful())
         {

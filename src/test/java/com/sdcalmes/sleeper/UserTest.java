@@ -9,9 +9,9 @@ import static org.junit.Assert.assertEquals;
 public class UserTest
 {
 
-    Sleeper sleeper = new SleeperApi();
-    final String userNameToTest = "sdcalmes";
-    final String userIdToTest = "333314910077321216";
+    private final Sleeper sleeper = new SleeperApi();
+    private final String userNameToTest = "sdcalmes";
+    private final String userIdToTest = "333314910077321216";
 
     //Test getting a user by name
     @Test

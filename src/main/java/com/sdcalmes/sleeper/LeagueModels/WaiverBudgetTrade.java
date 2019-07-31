@@ -1,6 +1,6 @@
 package com.sdcalmes.sleeper.LeagueModels;
 
-public class WaiverBudgetTrade {
+class WaiverBudgetTrade {
 
     private int sender;
     private int receiver;

@@ -11,68 +11,92 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Immutable
-public class DraftImpl {
+public final class DraftImpl
+{
 
     private final transient Drafts draftsEndpoint;
 
-    DraftImpl(final Retrofit retrofit) {
+    DraftImpl(final Retrofit retrofit)
+    {
         draftsEndpoint = retrofit.create(Drafts.class);
     }
 
-    public List<Draft> getAllDraftsForUser(String userId, String season) {
+    public List<Draft> getAllDraftsForUser(String userId, String season) throws SleeperError, IOException
+    {
         List<Draft> drafts = new ArrayList<>();
-        try {
             Response<List<Draft>> r = draftsEndpoint.getAllDraftsForUser(userId, season).execute();
-            drafts = r.body();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+            if (r.isSuccessful())
+            {
+                drafts = r.body();
+            }
+            else
+            {
+                throw ErrorUtils.parseError(r);
+            }
         return drafts;
     }
 
-    public List<Draft> getDraftsForLeague(String leagueId) {
+    public List<Draft> getDraftsForLeague(String leagueId) throws SleeperError, IOException
+    {
         List<Draft> drafts = new ArrayList<>();
-        try {
             Response<List<Draft>> r = draftsEndpoint.getDraftsForLeague(leagueId).execute();
-            drafts = r.body();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+            if (r.isSuccessful())
+            {
+                drafts = r.body();
+            }
+            else
+            {
+                throw ErrorUtils.parseError(r);
+            }
+
         return drafts;
     }
 
-    public Draft getDraft(String draftId) {
+    public Draft getDraft(String draftId) throws SleeperError, IOException
+    {
         Draft d;
-        try {
             Response<Draft> r = draftsEndpoint.getDraft(draftId).execute();
-            d = r.body();
-        } catch (IOException e) {
-            d = new Draft();
-            System.err.println("FAIL GETTING DRAFT");
-            e.printStackTrace();
-        }
+            if (r.isSuccessful())
+            {
+                d = r.body();
+            }
+            else
+            {
+                throw ErrorUtils.parseError(r);
+            }
+
         return d;
     }
 
-    public List<DraftPick> getDraftPicksFromDraft(String draftId) {
+    public List<DraftPick> getDraftPicksFromDraft(String draftId) throws SleeperError, IOException
+    {
         List<DraftPick> draftPicks = new ArrayList<>();
-        try {
             Response<List<DraftPick>> r = draftsEndpoint.getDraftPicksFromDraft(draftId).execute();
-            draftPicks = r.body();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+            if (r.isSuccessful())
+            {
+                draftPicks = r.body();
+            }
+            else
+            {
+                throw ErrorUtils.parseError(r);
+            }
+
         return draftPicks;
     }
 
-    public List<DraftPickTrade> getTradedPicksForDraft(String draftId) {
+    public List<DraftPickTrade> getTradedPicksForDraft(String draftId) throws SleeperError, IOException
+    {
         List<DraftPickTrade> draftPickTrades = new ArrayList<>();
-        try {
             Response<List<DraftPickTrade>> r = draftsEndpoint.getTradedPicksForDraft(draftId).execute();
-            draftPickTrades = r.body();
-        }  catch (IOException e) {
-            e.printStackTrace();
-        }
+            if (r.isSuccessful())
+            {
+                draftPickTrades = r.body();
+            }
+            else
+            {
+                throw ErrorUtils.parseError(r);
+            }
+
         return draftPickTrades;
     }
 }

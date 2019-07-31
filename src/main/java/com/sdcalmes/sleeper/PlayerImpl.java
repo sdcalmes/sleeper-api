@@ -9,21 +9,27 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Immutable
-public class PlayerImpl {
+public class PlayerImpl
+{
 
     private final transient Players playersEndpoint;
 
-    PlayerImpl(final Retrofit retrofit) {
+    PlayerImpl(final Retrofit retrofit)
+    {
         playersEndpoint = retrofit.create(Players.class);
     }
 
-    public Map<String, Player> getAllPlayers() {
+    public Map<String, Player> getAllPlayers() throws SleeperError, IOException
+    {
         Map<String, Player> playerMap = new HashMap<>();
-        try {
-            Response<Map<String, Player>> r = playersEndpoint.getAllPlayers().execute();
+        Response<Map<String, Player>> r = playersEndpoint.getAllPlayers().execute();
+        if (r.isSuccessful())
+        {
             playerMap = r.body();
-        } catch (IOException e) {
-            e.printStackTrace();
+        }
+        else
+        {
+            throw ErrorUtils.parseError(r);
         }
 
         return playerMap;

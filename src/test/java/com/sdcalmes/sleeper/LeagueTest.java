@@ -7,37 +7,43 @@ import com.sdcalmes.sleeper.LeagueModels.Matchup;
 import com.sdcalmes.sleeper.LeagueModels.Roster;
 import org.junit.Test;
 
+import java.io.IOException;
 import java.util.List;
 
 import static org.junit.Assert.*;
 
-public class LeagueTest {
+public class LeagueTest
+{
 
     Sleeper sleeper = new SleeperApi();
     final String userNameToTest = "sdcalmes";
     final String leagueIdToTest = "363728866864312320";
 
     @Test
-    public void testGettingLeaguesForUser() {
+    public void testGettingLeaguesForUser() throws SleeperError, IOException
+    {
         User user = sleeper.users().getByUsername(userNameToTest);
         List<League> leagues = sleeper.leagues().getAllLeaguesForUserBySeason(user.getUser_id(), "2019");
         assertTrue("Test user has no leagues!", leagues.size() > 0);
     }
 
     @Test
-    public void testGetRosters() {
+    public void testGetRosters() throws SleeperError, IOException
+    {
         List<Roster> rosters = sleeper.leagues().getAllRostersInLeague(leagueIdToTest);
         assertTrue("There were no rosters retrieved!!", rosters.size() > 0);
     }
 
     @Test
-    public void testGetUsersFromLeague() {
+    public void testGetUsersFromLeague() throws SleeperError, IOException
+    {
         List<User> users = sleeper.leagues().getAllUsersInLeague(leagueIdToTest);
         assertTrue("There were no users retrieved!", users.size() > 0);
     }
 
     @Test
-    public void testGetMatchupsForWeek() {
+    public void testGetMatchupsForWeek() throws SleeperError, IOException
+    {
         List<Matchup> matchups = sleeper.leagues().getMatchupsForWeek(leagueIdToTest, "10");
         assertTrue("There were no matchups retrieved!", matchups.size() > 0);
     }
@@ -55,7 +61,8 @@ public class LeagueTest {
 //    }
 
     @Test
-    public void testGetLeague() {
+    public void testGetLeague() throws SleeperError, IOException
+    {
         League league = sleeper.leagues().getById(leagueIdToTest);
         assertEquals("League received ID does not match expected ID!",
                 leagueIdToTest, league.getLeague_id());

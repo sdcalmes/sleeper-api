@@ -8,6 +8,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 import javax.annotation.concurrent.Immutable;
 
+/**
+ * The type Sleeper api.
+ */
 @Immutable
 public final class SleeperApi implements Sleeper {
 
@@ -20,6 +23,9 @@ public final class SleeperApi implements Sleeper {
     private final transient Retrofit retrofit;
 
 
+    /**
+     * Instantiates a new Sleeper api.
+     */
     public SleeperApi()
     {
         this(SleeperApi.RETROFIT);

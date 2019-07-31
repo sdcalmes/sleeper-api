@@ -9,17 +9,34 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The type League.
+ */
 @Immutable
 public final class LeagueImpl
 {
 
     private final transient Leagues leaguesEndpoint;
 
+    /**
+     * Instantiates a new League.
+     *
+     * @param retrofit the retrofit
+     */
     LeagueImpl(final Retrofit retrofit)
     {
         leaguesEndpoint = retrofit.create(Leagues.class);
     }
 
+    /**
+     * Gets all leagues for user by season.
+     *
+     * @param userId the user id
+     * @param season the season
+     * @return the all leagues for user by season
+     * @throws SleeperError the sleeper error
+     * @throws IOException  the io exception
+     */
     public List<League> getAllLeaguesForUserBySeason(String userId, String season) throws SleeperError, IOException
     {
         List<League> leagues;
@@ -35,6 +52,14 @@ public final class LeagueImpl
         return leagues;
     }
 
+    /**
+     * Gets by id.
+     *
+     * @param leagueId the league id
+     * @return the by id
+     * @throws SleeperError the sleeper error
+     * @throws IOException  the io exception
+     */
     public League getById(String leagueId) throws SleeperError, IOException
     {
         League league;
@@ -50,6 +75,14 @@ public final class LeagueImpl
         return league;
     }
 
+    /**
+     * Gets all rosters in league.
+     *
+     * @param leagueId the league id
+     * @return the all rosters in league
+     * @throws SleeperError the sleeper error
+     * @throws IOException  the io exception
+     */
     public List<Roster> getAllRostersInLeague(String leagueId) throws SleeperError, IOException
     {
         List<Roster> rosters;
@@ -66,6 +99,14 @@ public final class LeagueImpl
         return rosters;
     }
 
+    /**
+     * Gets all users in league.
+     *
+     * @param leagueId the league id
+     * @return the all users in league
+     * @throws SleeperError the sleeper error
+     * @throws IOException  the io exception
+     */
     public List<User> getAllUsersInLeague(String leagueId) throws SleeperError, IOException
     {
         List<User> users;
@@ -81,6 +122,15 @@ public final class LeagueImpl
         return users;
     }
 
+    /**
+     * Gets matchups for week.
+     *
+     * @param leagueId the league id
+     * @param week     the week
+     * @return the matchups for week
+     * @throws SleeperError the sleeper error
+     * @throws IOException  the io exception
+     */
     public List<Matchup> getMatchupsForWeek(String leagueId, String week) throws SleeperError, IOException
     {
         List<Matchup> matchups;
@@ -97,6 +147,15 @@ public final class LeagueImpl
     }
 
 
+    /**
+     * Gets transactions.
+     *
+     * @param leagueId the league id
+     * @param week     the week
+     * @return the transactions
+     * @throws SleeperError the sleeper error
+     * @throws IOException  the io exception
+     */
     public List<Transaction> getTransactions(String leagueId, String week) throws SleeperError, IOException
     {
         List<Transaction> transactions;
@@ -112,6 +171,14 @@ public final class LeagueImpl
         return transactions;
     }
 
+    /**
+     * Gets traded picks.
+     *
+     * @param leagueId the league id
+     * @return the traded picks
+     * @throws SleeperError the sleeper error
+     * @throws IOException  the io exception
+     */
     public List<DraftPickTrade> getTradedPicks(String leagueId) throws SleeperError, IOException
     {
         List<DraftPickTrade> draftPickTrades;

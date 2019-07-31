@@ -10,11 +10,11 @@ plugins {
     // Apply the java-library plugin to add support for Java Library
     id 'java-library'
     id 'com.github.johnrengelman.shadow' version '5.1.0'
+    id 'maven-publish'
+    id 'signing'
 }
 
 repositories {
-    // Use jcenter for resolving dependencies.
-    // You can declare any Maven/Ivy/file repository here.
     jcenter()
 }
 
@@ -42,3 +42,90 @@ tasks.withType(JavaCompile) {
     sourceCompatibility = '1.8'
     targetCompatibility = '1.8'
 }
+
+task sourcesJar(type: Jar) {
+    archiveClassifier = 'sources'
+    from sourceSets.main.allJava
+}
+
+tasks.withType(Javadoc) {
+    options.addStringOption("Xdoclint:none","-quiet")
+    options.addStringOption("encoding","UTF-8")
+    options.addStringOption("charSet","UTF-8")
+}
+
+//task javaDocTest(type: Javadoc) {
+//    source = sourceSets.main.allJava
+//    destinationDir = reporting.file("javadocs")
+//    options.addStringOption("Xdoclint:none","-quiet")
+//    options.addStringOption("encoding","UTF-8")
+//    options.addStringOption("charSet","UTF-8")
+//}
+
+task javadocJar(type: Jar) {
+    archiveClassifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+artifacts {
+    archives sourcesJar, javadocJar
+}
+
+version = "1.0.0-SNAPSHOT"
+
+publishing {
+    repositories {
+        maven {
+            def releasesRepoUrl = "https://oss.sonatype.org/service/local/staging/deploy/maven2/"
+            def snapshotsRepoUrl = "https://oss.sonatype.org/content/repositories/snapshots/"
+            url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
+            credentials {
+                username = "$ossrhUsername"
+                password = "$ossrhPassword"
+            }
+        }
+    }
+    publications {
+        mavenJava(MavenPublication) {
+            groupId 'org.sdcalmes'
+            artifactId 'sleeper-api'
+            from components.java
+
+            artifact sourcesJar
+            artifact javadocJar
+
+            pom {
+                name = 'Sleeper API Wrapper'
+                packaging = 'jar'
+                description = 'This library gives you an easy-to-use wrapper for the Sleeper fantasy football API'
+                url = 'https://github.com/sdcalmes/sleeper-api'
+
+                scm {
+                    connection = 'scm:git:git://github.com/sdcalmes/sleeper-api.git'
+                    developerConnection = 'scm:git:ssh://github.com:sdcalmes/sleeper-api.git'
+                    url = 'https://github.com/sdcalmes/sleeper-api'
+                }
+
+                licenses {
+                    license {
+                        name = 'MIT License'
+                        url = 'https://github.com/sdcalmes/sleeper-api/blob/master/LICENSE.txt'
+                    }
+                }
+
+                developers {
+                    developer {
+                        id = 'sdcalmes'
+                        name = 'Sam Calmes'
+                        email = 'sdcalmes@gmail.com'
+                    }
+                }
+            }
+        }
+    }
+}
+
+signing {
+    sign publishing.publications.mavenJava
+}
+

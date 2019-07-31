@@ -8,17 +8,32 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * The type Player.
+ */
 @Immutable
 public class PlayerImpl
 {
 
     private final transient Players playersEndpoint;
 
+    /**
+     * Instantiates a new Player.
+     *
+     * @param retrofit the retrofit
+     */
     PlayerImpl(final Retrofit retrofit)
     {
         playersEndpoint = retrofit.create(Players.class);
     }
 
+    /**
+     * Gets all players.
+     *
+     * @return the all players
+     * @throws SleeperError the sleeper error
+     * @throws IOException  the io exception
+     */
     public Map<String, Player> getAllPlayers() throws SleeperError, IOException
     {
         Map<String, Player> playerMap;

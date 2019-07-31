@@ -6,17 +6,33 @@ import retrofit2.Retrofit;
 import javax.annotation.concurrent.Immutable;
 import java.io.IOException;
 
+/**
+ * The type Users.
+ */
 @Immutable
 public final class UsersImpl
 {
 
     private final transient Retrofit retrofit;
 
+    /**
+     * Instantiates a new Users.
+     *
+     * @param retrofit the retrofit
+     */
     UsersImpl(final Retrofit retrofit)
     {
         this.retrofit = retrofit;
     }
 
+    /**
+     * Gets by username.
+     *
+     * @param username the username
+     * @return the by username
+     * @throws SleeperError the sleeper error
+     * @throws IOException  the io exception
+     */
     public User getByUsername(String username) throws SleeperError, IOException
     {
 
@@ -35,6 +51,14 @@ public final class UsersImpl
         return user;
     }
 
+    /**
+     * Gets by id.
+     *
+     * @param id the id
+     * @return the by id
+     * @throws SleeperError the sleeper error
+     * @throws IOException  the io exception
+     */
     public User getById(String id) throws SleeperError, IOException
     {
         User user;

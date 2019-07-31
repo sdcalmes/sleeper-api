@@ -10,17 +10,34 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The type Draft.
+ */
 @Immutable
 public final class DraftImpl
 {
 
     private final transient Drafts draftsEndpoint;
 
+    /**
+     * Instantiates a new Draft.
+     *
+     * @param retrofit the retrofit
+     */
     DraftImpl(final Retrofit retrofit)
     {
         draftsEndpoint = retrofit.create(Drafts.class);
     }
 
+    /**
+     * Gets all drafts for user.
+     *
+     * @param userId the user id
+     * @param season the season
+     * @return the all drafts for user
+     * @throws SleeperError the sleeper error
+     * @throws IOException  the io exception
+     */
     public List<Draft> getAllDraftsForUser(String userId, String season) throws SleeperError, IOException
     {
         List<Draft> drafts;
@@ -36,6 +53,14 @@ public final class DraftImpl
         return drafts;
     }
 
+    /**
+     * Gets drafts for league.
+     *
+     * @param leagueId the league id
+     * @return the drafts for league
+     * @throws SleeperError the sleeper error
+     * @throws IOException  the io exception
+     */
     public List<Draft> getDraftsForLeague(String leagueId) throws SleeperError, IOException
     {
         List<Draft> drafts;
@@ -52,6 +77,14 @@ public final class DraftImpl
         return drafts;
     }
 
+    /**
+     * Gets draft.
+     *
+     * @param draftId the draft id
+     * @return the draft
+     * @throws SleeperError the sleeper error
+     * @throws IOException  the io exception
+     */
     public Draft getDraft(String draftId) throws SleeperError, IOException
     {
         Draft d;
@@ -68,6 +101,14 @@ public final class DraftImpl
         return d;
     }
 
+    /**
+     * Gets draft picks from draft.
+     *
+     * @param draftId the draft id
+     * @return the draft picks from draft
+     * @throws SleeperError the sleeper error
+     * @throws IOException  the io exception
+     */
     public List<DraftPick> getDraftPicksFromDraft(String draftId) throws SleeperError, IOException
     {
         List<DraftPick> draftPicks;
@@ -84,6 +125,14 @@ public final class DraftImpl
         return draftPicks;
     }
 
+    /**
+     * Gets traded picks for draft.
+     *
+     * @param draftId the draft id
+     * @return the traded picks for draft
+     * @throws SleeperError the sleeper error
+     * @throws IOException  the io exception
+     */
     public List<DraftPickTrade> getTradedPicksForDraft(String draftId) throws SleeperError, IOException
     {
         List<DraftPickTrade> draftPickTrades;

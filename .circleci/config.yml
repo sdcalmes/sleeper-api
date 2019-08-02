@@ -5,6 +5,9 @@
 version: 2.1
 jobs:
   build:
+    dependencies:
+      pre:
+        - source environmentSetup.sh && copyEnvVarsToGradleProperties
     docker:
       # specify the version you desire here
       - image: circleci/openjdk:8-jdk

@@ -36,4 +36,11 @@ public interface Sleeper {
      */
     PlayerImpl players();
 
+    /**
+     * Stats stat.
+     *
+     * @return the stat
+     */
+    StatImpl stats();
+
 }

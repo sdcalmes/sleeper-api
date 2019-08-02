@@ -23,13 +23,15 @@ jobs:
       TERM: dumb
 
     steps:
+
+      - checkout
+
       - run:
           name: LS
           command: ls
       - run:
           name: Generate Gradle Properties
           command: source environmentSetup.sh && copyEnvVarsToGradleProperties
-      - checkout
 
       # Download and cache dependencies
       - restore_cache:

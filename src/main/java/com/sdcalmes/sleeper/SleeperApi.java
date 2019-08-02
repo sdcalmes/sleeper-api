@@ -55,4 +55,9 @@ public final class SleeperApi implements Sleeper {
         return new PlayerImpl(this.retrofit);
     }
 
+    @Override
+    public StatImpl stats() {
+        return new StatImpl(this.retrofit);
+    }
+
 }

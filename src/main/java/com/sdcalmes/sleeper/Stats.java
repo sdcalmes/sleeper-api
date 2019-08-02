@@ -20,7 +20,7 @@ interface Stats
      * @param week        the week
      * @return the weekly stats
      */
-    @GET("/stats/nfl/{season_type}/{season}/{week}")
+    @GET("stats/nfl/{season_type}/{season}/{week}")
     Call<Map<String, Stat>> getWeeklyStats(@Path("season_type") String season_type,
                                            @Path("season") String season,
                                            @Path("week") String week);
@@ -32,7 +32,7 @@ interface Stats
      * @param season      the season
      * @return the season stats
      */
-    @GET("/stats/nfl/{season_type}/{season}")
+    @GET("stats/nfl/{season_type}/{season}")
     Call<Map<String, Stat>> getSeasonStats(@Path("season_type") String season_type,
                                            @Path("season") String season);
 
@@ -45,7 +45,7 @@ interface Stats
      * @param week        the week
      * @return the weekly projections
      */
-    @GET("/projections/nfl/{season_type}/{season}/{week}")
+    @GET("projections/nfl/{season_type}/{season}/{week}")
     Call<Map<String, Stat>> getWeeklyProjections(@Path("season_type") String season_type,
                                                  @Path("season") String season,
                                                  @Path("week") String week);
@@ -57,7 +57,7 @@ interface Stats
      * @param season      the season
      * @return the season projections
      */
-    @GET("/projections/nfl/{season_type}/{season}")
+    @GET("projections/nfl/{season_type}/{season}")
     Call<Map<String, Stat>> getSeasonProjections(@Path("season_type") String season_type,
                                                  @Path("season") String season);
 

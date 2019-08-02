@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 function copyEnvVarsToGradleProperties {
+    GRADLE_DIRECTORY=$HOME"/.gradle"
     GRADLE_PROPERTIES=$HOME"/.gradle/gradle.properties"
     export GRADLE_PROPERTIES
     echo "Gradle Properties should exist at $GRADLE_PROPERTIES"
@@ -9,6 +10,7 @@ function copyEnvVarsToGradleProperties {
         echo "Gradle Properties does not exist"
 
         echo "Creating Gradle Properties file..."
+        mkdir $GRADLE_DIRECTORY
         touch $GRADLE_PROPERTIES
 
         echo "Writing to gradle.properties..."

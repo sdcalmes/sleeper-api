@@ -3,14 +3,15 @@ package com.sdcalmes.sleeper;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
+import javax.annotation.concurrent.Immutable;
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.Map;
 
 /**
  * The type Stat.
  */
-class StatImpl
+@Immutable
+public final class StatImpl
 {
 
     private final transient  Stats statsEndpoint;

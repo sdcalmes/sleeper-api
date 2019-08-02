@@ -5,14 +5,13 @@ import retrofit2.Retrofit;
 
 import javax.annotation.concurrent.Immutable;
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.Map;
 
 /**
  * The type Player.
  */
 @Immutable
-public class PlayerImpl
+public final class PlayerImpl
 {
 
     private final transient Players playersEndpoint;

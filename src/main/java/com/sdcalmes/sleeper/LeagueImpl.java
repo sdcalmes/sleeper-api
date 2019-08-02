@@ -6,7 +6,6 @@ import retrofit2.Retrofit;
 
 import javax.annotation.concurrent.Immutable;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 /**

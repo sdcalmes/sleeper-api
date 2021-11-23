@@ -1,5 +1,12 @@
 package com.sdcalmes.sleeper;
 
+import com.sdcalmes.sleeper.Draft.DraftImpl;
+import com.sdcalmes.sleeper.League.LeagueImpl;
+import com.sdcalmes.sleeper.Other.States.StatesImpl;
+import com.sdcalmes.sleeper.Player.PlayerImpl;
+import com.sdcalmes.sleeper.Stats.StatImpl;
+import com.sdcalmes.sleeper.User.UsersImpl;
+
 import javax.annotation.concurrent.Immutable;
 
 /**
@@ -42,5 +49,7 @@ public interface Sleeper {
      * @return the stat
      */
     StatImpl stats();
+
+    StatesImpl states();
 
 }

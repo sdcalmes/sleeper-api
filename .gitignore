@@ -2,6 +2,7 @@
 .gradle
 .idea
 gradle
+cache
 
 # Ignore Gradle build output directory
 build

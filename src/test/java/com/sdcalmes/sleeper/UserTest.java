@@ -1,5 +1,7 @@
 package com.sdcalmes.sleeper;
 
+import com.sdcalmes.sleeper.Errors.SleeperError;
+import com.sdcalmes.sleeper.User.User;
 import org.junit.Test;
 
 import java.io.IOException;

@@ -1,3 +1,4 @@
+[![CircleCI](https://circleci.com/gh/sdcalmes/sleeper-api/tree/master.svg?style=svg)](https://circleci.com/gh/sdcalmes/sleeper-api/tree/master)
 ## Java API For Sleeper Fantasy Football
 This is a Java adapter to use the Sleeper API. As it currently stands,
 it is incomplete, does not error check, and most likely has some poor

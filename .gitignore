@@ -3,6 +3,8 @@
 .idea
 gradle
 cache
+gradle.properties
+secret-keys.gpg
 
 # Ignore Gradle build output directory
 build

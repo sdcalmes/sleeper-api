@@ -27,6 +27,9 @@ yet to be implemented.
 ###### Warning: The folks over at sleeper ask that you use this call sparingly, as it is intended to only be used once per day at most to keep your player IDs updated. The average size of this query is 5mb.
 `List<Player> players = sleeper.players().getAllPlayers();`
 
+
+Please see the javadoc for more usages.
+
 ### Contributing
 
 Place pull requests if you please, or just leave issues on the tracker and I'll get to them when I can.

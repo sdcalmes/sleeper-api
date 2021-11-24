@@ -3,10 +3,20 @@
  */
 package com.sdcalmes.sleeper;
 
+import com.sdcalmes.sleeper.Draft.DraftImpl;
+import com.sdcalmes.sleeper.League.LeagueImpl;
+import com.sdcalmes.sleeper.Other.States.StatesImpl;
+import com.sdcalmes.sleeper.Player.PlayerImpl;
+import com.sdcalmes.sleeper.Stats.StatImpl;
+import com.sdcalmes.sleeper.User.UsersImpl;
+
+import okhttp3.Cache;
+import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 import javax.annotation.concurrent.Immutable;
+import java.io.File;
 
 /**
  * The type Sleeper api.
@@ -14,9 +24,16 @@ import javax.annotation.concurrent.Immutable;
 @Immutable
 public final class SleeperApi implements Sleeper {
 
+    private static final int cacheSize = 2 * 1024 * 1024; // 2MB
+    private static final Cache cache = new Cache(new File("./cache"), cacheSize);
+    private static final OkHttpClient okHttpClient = new OkHttpClient.Builder()
+            .cache(cache)
+            .build();
+
     private static final Retrofit RETROFIT =
             new Retrofit.Builder()
-            .baseUrl("http://api.sleeper.app/v1/")
+            .baseUrl("http://api.sleeper.app/")
+            .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
             .build();
 
@@ -58,6 +75,11 @@ public final class SleeperApi implements Sleeper {
     @Override
     public StatImpl stats() {
         return new StatImpl(this.retrofit);
+    }
+
+    @Override
+    public StatesImpl states() {
+        return new StatesImpl(this.retrofit);
     }
 
 }

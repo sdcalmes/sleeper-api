@@ -2,7 +2,7 @@ package com.sdcalmes.sleeper.Other.States;
 
 import java.util.List;
 
-public class State {
+public class SportState {
 
     private int week;
     private String season_type;

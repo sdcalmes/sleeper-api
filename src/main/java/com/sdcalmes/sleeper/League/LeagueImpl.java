@@ -6,6 +6,7 @@ import com.sdcalmes.sleeper.League.LeagueModels.*;
 import com.sdcalmes.sleeper.League.LeagueModels.Playoffs.PlayoffBracketEntry;
 import com.sdcalmes.sleeper.League.LeagueModels.Playoffs.PlayoffBracketTypes;
 import com.sdcalmes.sleeper.Metadata;
+import com.sdcalmes.sleeper.Other.Sports;
 import com.sdcalmes.sleeper.User.User;
 import retrofit2.Response;
 import retrofit2.Retrofit;
@@ -234,7 +235,7 @@ public final class LeagueImpl
     public Map<String, List<Transaction>> getAllTransactionsForLeague(String leagueId) throws SleeperError, IOException
     {
         Map<String, List<Transaction>> transactionsMap = new HashMap<>();
-        for (int i = 0; i <= Metadata.getNflState().getLeg(); ++i)
+        for (int i = 0; i <= Metadata.getSportState(Sports.NFL).getLeg(); ++i)
         {
             transactionsMap.put(Integer.toString(i), getTransactions(leagueId, Integer.toString(i)));
         }

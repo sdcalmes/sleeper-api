@@ -27,18 +27,18 @@ public class StatesImpl {
      * @throws SleeperError if Sleeper itself returns an error
      * @throws IOException if there is an extraneous issue
      */
-    public State getSportState(Sports sport) throws SleeperError, IOException
+    public SportState getSportState(Sports sport) throws SleeperError, IOException
     {
-        State state;
-        Response<State> r = statesEndpoint.getSportState(sport).execute();
+        SportState sportState;
+        Response<SportState> r = statesEndpoint.getSportState(sport).execute();
         if(r.isSuccessful())
         {
-            state = r.body();
+            sportState = r.body();
         }
         else
         {
             throw ErrorUtils.parseError(r);
         }
-        return state;
+        return sportState;
     }
 }

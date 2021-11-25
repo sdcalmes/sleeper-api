@@ -12,6 +12,6 @@ import javax.annotation.concurrent.Immutable;
 interface States {
 
     @GET("v1/state/{sport}")
-    Call<State> getSportState(@Path("sport") Sports sport);
+    Call<SportState> getSportState(@Path("sport") Sports sport);
 
 }

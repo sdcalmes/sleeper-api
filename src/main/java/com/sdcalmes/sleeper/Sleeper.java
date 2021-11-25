@@ -50,6 +50,4 @@ public interface Sleeper {
      */
     StatImpl stats();
 
-    StatesImpl states();
-
 }

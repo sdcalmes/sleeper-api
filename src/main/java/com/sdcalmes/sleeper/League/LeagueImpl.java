@@ -235,7 +235,7 @@ public final class LeagueImpl
     public Map<String, List<Transaction>> getAllTransactionsForLeague(String leagueId) throws SleeperError, IOException
     {
         Map<String, List<Transaction>> transactionsMap = new HashMap<>();
-        for (int i = 0; i <= Metadata.getSportState(Sports.NFL).getLeg(); ++i)
+        for (int i = 0; i <= Metadata.getNflNumberOfWeeks(); ++i)
         {
             transactionsMap.put(Integer.toString(i), getTransactions(leagueId, Integer.toString(i)));
         }

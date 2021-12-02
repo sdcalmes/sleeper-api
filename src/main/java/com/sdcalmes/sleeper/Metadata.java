@@ -13,6 +13,14 @@ public class Metadata {
 
     final static SleeperApi sleeper = new SleeperApi();
 
+    // NFL has moved to an 18 week season in 2021. This shouldn't mess with any other Sleeper calls as anything that
+    // goes to "18" should just return an empty object.
+    private final static int nflNumberOfWeeks = 18;
+
+    public static int getNflNumberOfWeeks() {
+        return nflNumberOfWeeks;
+    }
+
     public static SportState getSportState(Sports sport) throws IOException, SleeperError {
         return sleeper.states().getSportState(sport);
     }

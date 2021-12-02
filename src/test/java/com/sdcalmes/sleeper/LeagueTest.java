@@ -58,7 +58,7 @@ public class LeagueTest
         Map<String, List<Transaction>> transactions  = sleeper.leagues().getAllTransactionsForLeague(leagueIdToTest);
         List<Transaction> transactionList = new ArrayList<>();
         transactions.forEach((key, val) -> transactionList.addAll(val));
-        assertEquals("Transaction list size not as expected!", 563, transactionList.size());
+        assertEquals("Transaction list size not as expected!", 670, transactionList.size());
     }
 
     @Test
@@ -67,7 +67,7 @@ public class LeagueTest
         List<Transaction> transactions =
                 sleeper.leagues().getAllCompletedTransactionsForLeagueByTransactionType(leagueIdToTest,
                         TransactionType.waiver);
-        assertEquals("No waivers! That can't be right.", 252, transactions.size());
+        assertEquals("No waivers! That can't be right.", 301, transactions.size());
     }
 
     @Test
@@ -76,7 +76,7 @@ public class LeagueTest
         List<Transaction> transactions =
                 sleeper.leagues().getAllCompletedTransactionsForLeagueByTransactionType(leagueIdToTest,
                         TransactionType.all);
-        assertEquals("Completed transactions size mismatch!", 367, transactions.size());
+        assertEquals("Completed transactions size mismatch!", 448, transactions.size());
     }
 
     @Test

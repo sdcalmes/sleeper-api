@@ -1,16 +1,19 @@
 package com.sdcalmes.sleeper;
 
 import com.sdcalmes.sleeper.Errors.SleeperError;
+import com.sdcalmes.sleeper.Other.NflLeague;
 import com.sdcalmes.sleeper.Other.NflLeague.Teams;
 import com.sdcalmes.sleeper.Player.DepthChart;
 import com.sdcalmes.sleeper.Player.Player;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class PlayerTest {
 
@@ -39,7 +42,12 @@ public class PlayerTest {
     @Test
     public void getTeamDepthChart() throws SleeperError, IOException
     {
-        DepthChart d = sleeper.players().getTeamDepthChart(Teams.GB);
-        assertEquals("Depth chart map should have a size of 23.", d.size(), 23);
+
+        for (Teams t : Teams.values())
+        {
+            DepthChart d = sleeper.players().getTeamDepthChart(t);
+            assertTrue("Depth chart map for " + t.toString() + " should have a size >= 17 but has size " + d.size() + ".", d.size() >= 17);
+        }
+
     }
 }

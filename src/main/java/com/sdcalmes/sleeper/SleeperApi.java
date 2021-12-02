@@ -77,8 +77,7 @@ public final class SleeperApi implements Sleeper {
         return new StatImpl(this.retrofit);
     }
 
-    @Override
-    public StatesImpl states() {
+    protected StatesImpl states() {
         return new StatesImpl(this.retrofit);
     }
 

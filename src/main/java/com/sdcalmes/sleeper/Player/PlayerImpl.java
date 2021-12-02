@@ -2,11 +2,13 @@ package com.sdcalmes.sleeper.Player;
 
 import com.sdcalmes.sleeper.Errors.ErrorUtils;
 import com.sdcalmes.sleeper.Errors.SleeperError;
+import com.sdcalmes.sleeper.Other.NflLeague.Teams;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
 import javax.annotation.concurrent.Immutable;
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -71,5 +73,20 @@ public final class PlayerImpl
             throw ErrorUtils.parseError(r);
         }
         return player;
+    }
+
+    public DepthChart getTeamDepthChart(Teams team) throws SleeperError, IOException
+    {
+        DepthChart depthChart;
+        Response<DepthChart> r = playersEndpoint.getTeamDepthChart(team).execute();
+        if (r.isSuccessful())
+        {
+            depthChart = r.body();
+        }
+        else
+        {
+            throw ErrorUtils.parseError(r);
+        }
+        return depthChart;
     }
 }

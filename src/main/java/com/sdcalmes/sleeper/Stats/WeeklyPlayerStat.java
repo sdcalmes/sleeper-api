@@ -1,7 +1,7 @@
 package com.sdcalmes.sleeper.Stats;
 
+import com.sdcalmes.sleeper.Other.NflLeague.Teams;
 import com.sdcalmes.sleeper.Other.Sports;
-import com.sdcalmes.sleeper.Other.Teams;
 
 public class WeeklyPlayerStat {
 

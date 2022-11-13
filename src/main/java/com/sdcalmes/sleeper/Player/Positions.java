@@ -7,6 +7,7 @@ public enum Positions {
     WLB,
     TE,
     SS("DB"),
+    LS,
     SLB,
     RT,
     RG,
@@ -24,7 +25,9 @@ public enum Positions {
     LDE,
     LCB,
     K,
+    KOS,
     FS,
+    FB,
     CB,
     C,
     ROLB,
@@ -40,6 +43,9 @@ public enum Positions {
     WILL,
     MIKE,
     PK,
+    PR,
+    P,
+    KR,
     EDGE,
     ;
 

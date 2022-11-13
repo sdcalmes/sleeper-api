@@ -12,8 +12,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class PlayerTest {
 
@@ -47,6 +46,7 @@ public class PlayerTest {
         {
             DepthChart d = sleeper.players().getTeamDepthChart(t);
             assertTrue("Depth chart map for " + t.toString() + " should have a size >= 17 but has size " + d.size() + ".", d.size() >= 17);
+            assertFalse("Team: " + t.toString() + " is missing a position in the position enum. ", d.containsKey(null));
         }
 
     }

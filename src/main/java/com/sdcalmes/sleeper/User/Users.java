@@ -18,7 +18,7 @@ interface Users {
      * @param username the username
      * @return the by username
      */
-    @GET("v1/user/{username}")
+    @GET("user/{username}")
     Call<User> getByUsername(@Path("username") String username);
 
     /**
@@ -27,7 +27,7 @@ interface Users {
      * @param id the id
      * @return the by id
      */
-    @GET("v1/user/{id}")
+    @GET("user/{id}")
     Call<User> getById(@Path("id") String id);
 
 }

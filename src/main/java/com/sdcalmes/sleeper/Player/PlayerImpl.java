@@ -8,6 +8,7 @@ import retrofit2.Retrofit;
 
 import javax.annotation.concurrent.Immutable;
 import java.io.IOException;
+import java.util.List; // Ensure this import is present and covers TrendingPlayer
 import java.util.List;
 import java.util.Map;
 
@@ -88,5 +89,21 @@ public final class PlayerImpl
             throw ErrorUtils.parseError(r);
         }
         return depthChart;
+    }
+
+    public List<TrendingPlayer> getTrendingPlayers(TrendingType type, Integer lookbackHours, Integer limit) throws SleeperError, IOException {
+        List<TrendingPlayer> trendingPlayers;
+        Response<List<TrendingPlayer>> r = playersEndpoint.getTrendingPlayers(type, lookbackHours, limit).execute();
+        if (r.isSuccessful()) {
+            trendingPlayers = r.body();
+        } else {
+            throw ErrorUtils.parseError(r);
+        }
+        return trendingPlayers;
+    }
+
+    // Add overloaded version for when lookbackHours and limit are not specified (use API defaults)
+    public List<TrendingPlayer> getTrendingPlayers(TrendingType type) throws SleeperError, IOException {
+        return getTrendingPlayers(type, null, null);
     }
 }

@@ -4,6 +4,7 @@ import com.sdcalmes.sleeper.Other.NflLeague.Teams;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
+import retrofit2.http.Query; // Add this import
 
 import javax.annotation.concurrent.Immutable;
 import java.util.List;
@@ -20,7 +21,7 @@ interface Players {
      *
      * @return the all players
      */
-    @GET("v1/players/nfl")
+    @GET("players/nfl")
     Call<Map<String, Player>> getAllPlayers();
 
     // This api doesn't use the 'v1' like all the others.
@@ -30,4 +31,10 @@ interface Players {
     @GET("players/nfl/{team_abbr}/depth_chart")
     Call<DepthChart> getTeamDepthChart(@Path("team_abbr") Teams team_abbr);
 
+    @GET("players/nfl/trending/{type}")
+    Call<List<TrendingPlayer>> getTrendingPlayers(
+            @Path("type") TrendingType type,
+            @Query("lookback_hours") Integer lookbackHours,
+            @Query("limit") Integer limit
+    );
 }

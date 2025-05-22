@@ -5,6 +5,9 @@ package com.sdcalmes.sleeper.User;
  */
 public class User {
 
+    private static final String AVATAR_CDN_BASE_URL = "https://sleepercdn.com/avatars/";
+    private static final String AVATAR_THUMBS_CDN_BASE_URL = "https://sleepercdn.com/avatars/thumbs/";
+
     private String username;
     private String user_id;
     private String display_name;
@@ -54,5 +57,29 @@ public class User {
      */
     public String getAvatar() {
         return avatar;
+    }
+
+    /**
+     * Gets the full URL for the user's avatar.
+     * Returns null if the avatar ID is null.
+     * @return The full URL string or null.
+     */
+    public String getFullAvatarUrl() {
+        if (this.avatar == null) {
+            return null;
+        }
+        return AVATAR_CDN_BASE_URL + this.avatar;
+    }
+
+    /**
+     * Gets the thumbnail URL for the user's avatar.
+     * Returns null if the avatar ID is null.
+     * @return The thumbnail URL string or null.
+     */
+    public String getThumbnailAvatarUrl() {
+        if (this.avatar == null) {
+            return null;
+        }
+        return AVATAR_THUMBS_CDN_BASE_URL + this.avatar;
     }
 }

@@ -24,7 +24,7 @@ interface Leagues {
      * @param season the season
      * @return the all leagues for user by season
      */
-    @GET("v1/user/{user_id}/leagues/nfl/{season}")
+    @GET("user/{user_id}/leagues/nfl/{season}")
     Call<List<League>> getAllLeaguesForUserBySeason(@Path("user_id") String userId, @Path("season") String season);
 
     /**
@@ -33,7 +33,7 @@ interface Leagues {
      * @param leagueId the league id
      * @return the league by id
      */
-    @GET("v1/league/{league_id}")
+    @GET("league/{league_id}")
     Call<League> getById(@Path("league_id") String leagueId);
 
     /**
@@ -42,7 +42,7 @@ interface Leagues {
      * @param leagueId the league id
      * @return the all rosters in league
      */
-    @GET("v1/league/{league_id}/rosters")
+    @GET("league/{league_id}/rosters")
     Call<List<Roster>> getAllRostersInLeague(@Path("league_id") String leagueId);
 
     /**
@@ -51,7 +51,7 @@ interface Leagues {
      * @param leagueId the league id
      * @return the all users in league
      */
-    @GET("v1/league/{league_id}/users")
+    @GET("league/{league_id}/users")
     Call<List<User>> getAllUsersInLeague(@Path("league_id") String leagueId);
 
     /**
@@ -61,7 +61,7 @@ interface Leagues {
      * @param week     the week
      * @return the matchups for week
      */
-    @GET("v1/league/{league_id}/matchups/{week}")
+    @GET("league/{league_id}/matchups/{week}")
     Call<List<Matchup>> getMatchupsForWeek(@Path("league_id") String leagueId, @Path("week") String week);
 
     /**
@@ -71,7 +71,7 @@ interface Leagues {
      * @param week     the week
      * @return the transactions
      */
-    @GET("v1/league/{league_id}/transactions/{week}")
+    @GET("league/{league_id}/transactions/{week}")
     Call<List<Transaction>> getTransactions(@Path("league_id") String leagueId, @Path("week") String week);
 
     /**
@@ -80,7 +80,7 @@ interface Leagues {
      * @param leagueId the league id
      * @return the traded picks
      */
-    @GET("v1/league/{league_id}/traded_picks")
+    @GET("league/{league_id}/traded_picks")
     Call<List<DraftPickTrade>> getTradedPicks(@Path("league_id") String leagueId);
 
     /**
@@ -88,7 +88,7 @@ interface Leagues {
      * @param leagueId the league id
      * @return the winners bracket for this league
      */
-    @GET("v1/league/{league_id}/{bracket_type}_bracket")
+    @GET("league/{league_id}/{bracket_type}_bracket")
     Call<List<PlayoffBracketEntry>> getPlayoffBracket(@Path("league_id") String leagueId,
                                                       @Path("bracket_type") PlayoffBracketTypes bracketType);
 

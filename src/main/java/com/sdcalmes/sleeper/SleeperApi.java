@@ -32,7 +32,7 @@ public final class SleeperApi implements Sleeper {
 
     private static final Retrofit RETROFIT =
             new Retrofit.Builder()
-            .baseUrl("http://api.sleeper.app/")
+            .baseUrl("https://api.sleeper.app/v1/")
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
             .build();

@@ -23,7 +23,7 @@ interface Drafts {
      * @param season the season
      * @return the all drafts for user
      */
-    @GET("v1/user/{user_id}/drafts/nfl/{season}")
+    @GET("user/{user_id}/drafts/nfl/{season}")
     Call<List<Draft>> getAllDraftsForUser(@Path("user_id") String userId, @Path("season") String season);
 
     /**
@@ -32,7 +32,7 @@ interface Drafts {
      * @param leagueId the league id
      * @return the drafts for league
      */
-    @GET("v1/league/{league_id}/drafts")
+    @GET("league/{league_id}/drafts")
     Call<List<Draft>> getDraftsForLeague(@Path("league_id") String leagueId);
 
     /**
@@ -41,7 +41,7 @@ interface Drafts {
      * @param draftId the draft id
      * @return the draft
      */
-    @GET("v1/draft/{draft_id}")
+    @GET("draft/{draft_id}")
     Call<Draft> getDraft(@Path("draft_id") String draftId);
 
     /**
@@ -50,7 +50,7 @@ interface Drafts {
      * @param draftId the draft id
      * @return the draft picks from draft
      */
-    @GET("v1/draft/{draft_id}/picks")
+    @GET("draft/{draft_id}/picks")
     Call<List<DraftPick>> getDraftPicksFromDraft(@Path("draft_id") String draftId);
 
     /**
@@ -59,7 +59,7 @@ interface Drafts {
      * @param draftId the draft id
      * @return the traded picks for draft
      */
-    @GET("v1/draft/{draft_id}/traded_picks")
+    @GET("draft/{draft_id}/traded_picks")
     Call<List<DraftPickTrade>> getTradedPicksForDraft(@Path("draft_id") String draftId);
 
 }
